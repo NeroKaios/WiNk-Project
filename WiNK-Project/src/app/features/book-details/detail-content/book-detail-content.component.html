@@ -1,0 +1,84 @@
+<div class="background text-white" *ngIf="volume">
+  <div class="container py-3">
+    <div class="detail-image-container">
+      <app-book-cover
+        [imageLinks]="volume.volumeInfo.imageLinks"
+      ></app-book-cover>
+    </div>
+
+    <div class="my-2">
+      <h3>{{ volume.volumeInfo.title }}</h3>
+    </div>
+    <div
+      class="mb-2 d-flex align-items-center"
+      *ngIf="volume.volumeInfo.averageRating"
+    >
+      <img
+        src="../../../../../assets/star.svg"
+        alt="No image..."
+        class="star-image"
+      />
+      <span class="fw-bold ms-1">
+        {{ volume.volumeInfo.averageRating }}
+      </span>
+    </div>
+    <hr />
+
+    <div class="mb-2">
+      <app-book-list-items [items]="volume.volumeInfo.authors">
+        Author(s):
+      </app-book-list-items>
+    </div>
+
+    <div class="mb-2">
+      <app-book-list-items [items]="volume.volumeInfo.categories">
+        Category/Categories:
+      </app-book-list-items>
+    </div>
+
+    <div class="mb-2">
+      Language:
+      <span class="text-gray ms-1">{{ volume.volumeInfo.language }}</span>
+    </div>
+
+    <div class="mb-2">
+      Publisher:
+      <span class="text-gray ms-1">{{ volume.volumeInfo.publisher }}</span>
+    </div>
+
+    <div class="mb-2">
+      Publish date:
+      <span class="text-gray ms-1">{{ volume.volumeInfo.publishedDate }}</span>
+    </div>
+
+    <div class="mb-2">
+      Page count:
+      <span class="text-gray ms-1">{{ volume.volumeInfo.pageCount }}</span>
+    </div>
+
+    <div class="mb-2" *ngIf="bookPrice">
+      Price:
+      <span class="text-gray ms-1">{{ bookPrice }}</span>
+    </div>
+
+    <div class="mt-3">
+      <button
+        *ngIf="volume.volumeInfo.infoLink"
+        (click)="onExternalLinkOpen(volume.volumeInfo.infoLink)"
+        class="btn btn-sm btn-secondary px-4 py-2 mb-2 me-0 me-2"
+      >
+        Get info
+      </button>
+      <button
+        class="btn btn-sm btn-primary px-4 py-2 mb-2"
+        *ngIf="
+          volume.saleInfo.saleability === forSaleIdentifier &&
+          volume.saleInfo.buyLink
+        "
+        (click)="onExternalLinkOpen(volume.saleInfo.buyLink)"
+      >
+        Order
+      </button>
+    </div>
+  </div>
+</div>
