@@ -13,9 +13,9 @@ import {SharedModule} from "../../shared/shared.module";
     BookCardContentComponent
   ],
   imports: [
-    CommonModule,
     CoreModule,
-    SharedModule
+    SharedModule,
+    CommonModule
   ],
   exports:[
     BookCardComponent,

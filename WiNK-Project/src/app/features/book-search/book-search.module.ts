@@ -10,8 +10,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     BooksSearchComponent
   ],
   imports: [
-    CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
   ],
   exports:[
     BooksSearchComponent

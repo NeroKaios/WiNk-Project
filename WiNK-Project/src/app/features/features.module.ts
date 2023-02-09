@@ -5,25 +5,26 @@ import {BookSearchModule} from "./book-search/book-search.module";
 import {BookListModule} from "./book-list/book-list.module";
 import {BookApiService} from "../core/services/BookApi/book-api.service";
 import {FeaturesRoutingModule} from "./features-routing.module";
+import {BookCardContentComponent} from "./book-card/card-content/book-card-content.component";
+import {BookDetailsModule} from "./book-details/book-details.module";
 
 
 
 @NgModule({
-  declarations: [
-  ],
+
   imports: [
     FeaturesRoutingModule,
     CommonModule,
     BookCardModule,
     BookSearchModule,
     BookListModule,
-    BookCardModule
+    BookDetailsModule
   ],
   exports:[
     BookCardModule,
     BookSearchModule,
     BookListModule,
-    BookCardModule
+    BookDetailsModule
   ],
   providers:[BookApiService]
 })

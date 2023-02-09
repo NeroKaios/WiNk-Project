@@ -19,8 +19,7 @@
   opacity: 0;
   transition: 0.2s ease all;
   background-color: $_mint;
-
-  &:hover {
-    opacity: 0.3;
-  }
+}
+.card-overlay :hover {
+  opacity: 0.3;
 }

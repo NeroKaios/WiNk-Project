@@ -13,9 +13,9 @@ import {BookCardModule} from "../book-card/book-card.module";
     PaginationButtonComponent
   ],
   imports: [
-    CommonModule,
     BookSearchModule,
-    BookCardModule
+    BookCardModule,
+    CommonModule
   ]
 })
 export class BookListModule { }
