@@ -1,7 +1,5 @@
-@import "../../../../../../shared/styles/base.scss";
-
 .card {
-  background-color: $_dark-purple;
+  background-color: $_dark-green;
   min-height: 25rem;
   color: $_white;
 }
@@ -20,7 +18,7 @@
   width: 100%;
   opacity: 0;
   transition: 0.2s ease all;
-  background-color: $_purple;
+  background-color: $_mint;
 
   &:hover {
     opacity: 0.3;

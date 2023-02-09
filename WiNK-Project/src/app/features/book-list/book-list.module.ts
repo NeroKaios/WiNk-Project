@@ -1,12 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {BooksListComponent} from "./list-page/books-list.component";
+import {PaginationButtonComponent} from "./pagination-button/pagination-button.component";
+import {BookSearchModule} from "../book-search/book-search.module";
+import {BookCardModule} from "../book-card/book-card.module";
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    BooksListComponent,
+    PaginationButtonComponent
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    BookSearchModule,
+    BookCardModule
   ]
 })
 export class BookListModule { }

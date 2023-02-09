@@ -1,12 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {BooksSearchComponent} from "./books-search.component";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    BooksSearchComponent
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
+  ],
+  exports:[
+    BooksSearchComponent
   ]
 })
 export class BookSearchModule { }

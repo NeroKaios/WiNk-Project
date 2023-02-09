@@ -1,0 +1,16 @@
+<div class="background mb-4">
+  <div class="container py-3">
+    <form [formGroup]="formGroup" class="text-white">
+      <div class="mb-2">
+        <label class="me-1">Search <span class="danger">*</span></label>
+        <input formControlName="searchTerm" type="text"
+               [ngClass]="{'is-invalid':searchTerm.invalid && (searchTerm.dirty || searchTerm.touched)}"
+               class="form-control form-control-sm"
+               placeholder="Search for books by name / author / keyword..."/>
+        <div class="danger" *ngIf="searchTerm.invalid && (searchTerm.dirty || searchTerm.touched)">Please fill this field</div>
+      </div>
+      <button class="btn btn-sm btn-light px-4 py-2 me-2 mb-sm-0 mb-2" (click)="formGroup.reset()">Reset</button>
+      <button class="btn btn-sm btn-primary px-4 py-2" (click)="onSearch()">Search books!</button>
+    </form>
+  </div>
+</div>

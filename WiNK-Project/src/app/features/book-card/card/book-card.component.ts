@@ -7,9 +7,9 @@ import {Volume} from "../../../core/models/volume.interface";
   styleUrls: ['./book-card.component.scss'],
 })
 export class BookCardComponent {
-  @Input() volume: Volume | null = null;
+  @Input() volume: Volume | undefined;
 
-  protected openBookDetailPage(): void {
+  openBookDetailPage(): void {
     if (this.volume?.id) {
       const url = location.origin + `/book-detail/${this.volume.id}`;
       window.open(url, '_blank');

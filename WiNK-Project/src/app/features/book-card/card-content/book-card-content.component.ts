@@ -7,12 +7,12 @@ import {VolumeInfo} from "../../../core/models/volumeInfo/volume-info.interface"
   styleUrls: ['./book-card-content.component.scss'],
 })
 export class BookCardContentComponent {
-  @Input() volumeInfo: VolumeInfo | null = null;
+  @Input() volumeInfo: VolumeInfo | undefined;
 
   @Output() detailButtonClick: EventEmitter<unknown> =
     new EventEmitter<unknown>();
 
-  protected onDetailButtonClick(): void {
+  onDetailButtonClick(): void {
     this.detailButtonClick.emit();
   }
 }
