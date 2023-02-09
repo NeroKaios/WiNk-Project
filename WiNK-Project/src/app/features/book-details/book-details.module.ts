@@ -12,8 +12,8 @@ import {SharedModule} from "../../shared/shared.module";
     BookDetailContentComponent
   ],
   imports: [
-    CommonModule,
-    SharedModule
+    SharedModule,
+    CommonModule
   ],
   exports:[
     BookDetailComponent,

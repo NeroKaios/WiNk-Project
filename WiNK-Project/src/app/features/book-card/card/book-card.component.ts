@@ -7,7 +7,7 @@ import {Volume} from "../../../core/models/volume.interface";
   styleUrls: ['./book-card.component.scss'],
 })
 export class BookCardComponent {
-  @Input() volume: Volume | undefined;
+  @Input() volume: Volume | null = null;
 
   openBookDetailPage(): void {
     if (this.volume?.id) {

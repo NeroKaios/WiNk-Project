@@ -1,12 +1,14 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import {Volume} from "../../../core/models/volume.interface";
 
+
 @Component({
   selector: 'app-book-detail-content',
   templateUrl: './book-detail-content.component.html',
   styleUrls: ['./book-detail-content.component.scss'],
 })
 export class BookDetailContentComponent implements OnChanges {
+
   @Input() volume: Volume | null = null;
 
   forSaleIdentifier = 'FOR_SALE';

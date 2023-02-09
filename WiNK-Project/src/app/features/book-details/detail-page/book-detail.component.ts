@@ -9,7 +9,7 @@ import {Volume} from "../../../core/models/volume.interface";
   styleUrls: ['./book-detail.component.scss'],
 })
 export class BookDetailComponent implements OnInit {
-  volume: Volume | undefined;
+  volume: Volume | null = null;
   forSaleIdentifier = 'FOR_SALE';
 
   constructor(
