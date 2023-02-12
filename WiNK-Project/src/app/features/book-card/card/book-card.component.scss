@@ -1,7 +1,7 @@
 .card {
-  background-color: $_dark-green;
+  background-color: #254A39FF;
   min-height: 25rem;
-  color: $_white;
+  color: #F0F0F1FF;
 }
 
 .card-container {
@@ -18,7 +18,7 @@
   width: 100%;
   opacity: 0;
   transition: 0.2s ease all;
-  background-color: $_mint;
+  background-color: #38CB5AFF;
 }
 .card-overlay :hover {
   opacity: 0.3;

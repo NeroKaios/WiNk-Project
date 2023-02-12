@@ -1,6 +1,7 @@
 <ng-container class="position-relative">
   <app-books-search
-    (searchButtonClick)="getSearchParams($event)"
+    (search)="getSearchParams($event)"
+    (searchedNumberOfBooks)="changeNumberOfBooks($event)"
   ></app-books-search>
 
   <div class="container" *ngIf="booksCollection && searchParams">
@@ -10,18 +11,18 @@
     <ng-template #collectionNotEmpty>
       <h4>Search results for "{{ searchParams.searchTerm }}"</h4>
       Showing {{ searchParams.startIndex + 1 }} -
-      {{ searchParams.startIndex + paginationStep }} results
+      {{ searchParams.startIndex + paginationStep! }} results
 
       <div class="cards-grid mt-3">
         <app-book-card
-          *ngFor="let item of booksCollection.items"
+          *ngFor="let item of booksCollection.items | slice:0:displayedNumberOfBooks"
           [volume]="item"
         ></app-book-card>
       </div>
 
       <div
         class="item-centered my-3"
-        *ngIf="booksCollection.totalItems > paginationStep"
+        *ngIf="booksCollection.totalItems > paginationStep!"
       >
         <app-pagination-button
           class="me-1"
@@ -35,7 +36,7 @@
           class="ms-1"
           [isDisabled]="
             searchParams.startIndex >
-            booksCollection.totalItems - paginationStep
+            booksCollection.totalItems - paginationStep!
           "
           (buttonClick)="onNextPageClick()"
         >

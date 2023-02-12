@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import {Volume} from "../../../core/models/volume.interface";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-book-card',
@@ -9,10 +10,11 @@ import {Volume} from "../../../core/models/volume.interface";
 export class BookCardComponent {
   @Input() volume: Volume | null = null;
 
+  constructor(private router : Router) {
+  }
   openBookDetailPage(): void {
     if (this.volume?.id) {
-      const url = location.origin + `/book-detail/${this.volume.id}`;
-      window.open(url, '_blank');
+      this.router.navigate([`/book-detail/${this.volume.id}`])
     }
   }
 }

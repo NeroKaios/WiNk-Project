@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {BookDetailComponent} from "./detail-page/book-detail.component";
 import {BookDetailContentComponent} from "./detail-content/book-detail-content.component";
 import {SharedModule} from "../../shared/shared.module";
+import {RouterModule} from "@angular/router";
 
 
 
@@ -11,10 +12,11 @@ import {SharedModule} from "../../shared/shared.module";
     BookDetailComponent,
     BookDetailContentComponent
   ],
-  imports: [
-    SharedModule,
-    CommonModule
-  ],
+    imports: [
+        SharedModule,
+        CommonModule,
+        RouterModule
+    ],
   exports:[
     BookDetailComponent,
     BookDetailContentComponent

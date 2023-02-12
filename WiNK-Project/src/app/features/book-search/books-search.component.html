@@ -3,14 +3,27 @@
     <form [formGroup]="formGroup" class="text-white">
       <div class="mb-2">
         <label class="me-1">Search <span class="danger">*</span></label>
-        <input formControlName="searchTerm" type="text" (keyup)="onSearch()"
+        <input formControlName="searchTerm" type="text" (keydown)="onSearch($event)" [readOnly]="selectNumber.pristine"
                [ngClass]="{'is-invalid':searchTerm.invalid && (searchTerm.dirty || searchTerm.touched)}"
                class="form-control form-control-sm"
                placeholder="Search for books by name / author / keyword..."/>
-        <div class="danger" *ngIf="searchTerm.invalid && (searchTerm.dirty || searchTerm.touched)">Please fill this field</div>
+        <div class="danger" *ngIf="searchTerm.touched && selectNumber.pristine">
+          Please choose a number of books first
+        </div>
+        <div class="danger" *ngIf="!searchTerm.value && (searchTerm.status.toString().localeCompare('INVALID') || searchTerm.dirty)">
+          Please fill this section
+        </div>
       </div>
-      <button class="btn btn-sm btn-light px-4 py-2 me-2 mb-sm-0 mb-2" (click)="formGroup.reset()">Reset</button>
-      <button class="btn btn-sm btn-primary px-4 py-2" (click)="onSearch()">Search books!</button>
+      <div>
+      <select formControlName="selectNumber"
+              id="select" [value]="searchedNumberOfBooks" (change)="changeNumberOfBooks()">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+      </select>
+      </div>
+      <div class="danger" *ngIf="selectNumber.invalid && (selectNumber.dirty || selectNumber.touched)">Please select a number</div>
     </form>
   </div>
 </div>
