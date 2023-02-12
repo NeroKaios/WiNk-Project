@@ -9,7 +9,7 @@ $height-sizes: 40px, 56px;
 .custom-scrollbar {
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: $_light-gray;
+  scrollbar-color: #EEECECFF;
 }
 
 .custom-scrollbar ::-webkit-scrollbar-thumb {

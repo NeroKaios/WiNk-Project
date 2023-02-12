@@ -3,7 +3,7 @@ import {CollectionResultModel} from "../../../core/models/collection-result.inte
 import {Volume} from "../../../core/models/volume.interface";
 import {SearchParams} from "../../../core/models/search-params.interface";
 import {BookApiService} from "../../../core/services/BookApi/book-api.service";
-import {debounceTime, distinctUntilChanged} from "rxjs";
+// import {debounceTime, distinctUntilChanged, Observable, Subject, tap} from "rxjs";
 
 
 @Component({
@@ -14,8 +14,9 @@ import {debounceTime, distinctUntilChanged} from "rxjs";
 export class BooksListComponent{
   displayedNumberOfBooks: number | undefined = 0;
   booksCollection: CollectionResultModel<Volume[]> | null = null;
-  searchParams: SearchParams | null = null;
+  searchParams: SearchParams | undefined;
   paginationStep: number | undefined = 30;
+  //subject : Subject<SearchParams> = new Subject<SearchParams>();
 
   constructor(private booksApi: BookApiService) {
   }
@@ -63,18 +64,36 @@ export class BooksListComponent{
 
   private loadBooksCollection(): void {
     if (this.searchParams) {
-      this.booksApi.getBooks(this.searchParams).pipe(
-        debounceTime(800),
-        distinctUntilChanged(),
-      )
-        .subscribe({
+      this.booksApi.getBooks(this.searchParams)/*.pipe(
+        debounceTime(800)
+      )*/.subscribe({
           next: (response: any) => {
             if (response) {
               this.booksCollection = response;
             }
-            console.log("loadBooks")
           }
         })
     }
   }
+  /*private loadBooksCollection2(): void {
+    if (this.searchParams) {
+      let observableA = Observable.create((observable: { next: (arg0: SearchParams | undefined) => any; complete: () => any; }) =>{
+          observable.next(this.searchParams),
+          observable.complete()
+      }
+     )
+      observableA.pipe(
+        debounceTime(800),
+        distinctUntilChanged()
+      ).subscribe((params : SearchParams) => {
+        this.booksApi.getBooks(params).subscribe(
+          (response: any) => {
+            if (response) {
+              this.booksCollection = response;
+            }
+          })
+        }
+      )
+    }
+  }*/
 }
