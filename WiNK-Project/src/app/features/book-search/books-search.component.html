@@ -3,7 +3,7 @@
     <form [formGroup]="formGroup" class="text-white">
       <div class="mb-2">
         <label class="me-1">Search <span class="danger">*</span></label>
-        <input formControlName="searchTerm" type="text" (keydown)="onSearch($event)" [readOnly]="selectNumber.pristine"
+        <input formControlName="searchTerm" type="text" (keydown)="onSearch()" [readOnly]="selectNumber.pristine"
                [ngClass]="{'is-invalid':searchTerm.invalid && (searchTerm.dirty || searchTerm.touched)}"
                class="form-control form-control-sm"
                placeholder="Search for books by name / author / keyword..."/>

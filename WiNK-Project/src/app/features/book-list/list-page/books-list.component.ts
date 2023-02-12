@@ -1,9 +1,9 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
 import {CollectionResultModel} from "../../../core/models/collection-result.interface";
 import {Volume} from "../../../core/models/volume.interface";
 import {SearchParams} from "../../../core/models/search-params.interface";
 import {BookApiService} from "../../../core/services/BookApi/book-api.service";
-import {debounceTime} from "rxjs";
+import {debounceTime, distinctUntilChanged} from "rxjs";
 
 
 @Component({
@@ -11,8 +11,8 @@ import {debounceTime} from "rxjs";
   templateUrl: './books-list.component.html',
   styleUrls: ['./books-list.component.scss'],
 })
-export class BooksListComponent {
-  displayedNumberOfBooks : number | undefined = 0;
+export class BooksListComponent{
+  displayedNumberOfBooks: number | undefined = 0;
   booksCollection: CollectionResultModel<Volume[]> | null = null;
   searchParams: SearchParams | null = null;
   paginationStep: number | undefined = 30;
@@ -26,8 +26,7 @@ export class BooksListComponent {
     }
     this.searchParams = data;
     this.searchParams.startIndex = 0;
-    this.loadBooksCollection();
-    console.log(this.displayedNumberOfBooks)
+    this.loadBooksCollection()
   }
 
   onPreviousPageClick(): void {
@@ -57,16 +56,16 @@ export class BooksListComponent {
     }
   }
 
-  changeNumberOfBooks(numberOfBooks: number | undefined):void{
+  changeNumberOfBooks(numberOfBooks: number | undefined): void {
     this.displayedNumberOfBooks = numberOfBooks;
     this.paginationStep = numberOfBooks;
   }
 
-
   private loadBooksCollection(): void {
     if (this.searchParams) {
       this.booksApi.getBooks(this.searchParams).pipe(
-        debounceTime(800)
+        debounceTime(800),
+        distinctUntilChanged(),
       )
         .subscribe({
           next: (response: any) => {

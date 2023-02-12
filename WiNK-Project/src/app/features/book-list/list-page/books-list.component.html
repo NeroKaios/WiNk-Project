@@ -3,7 +3,6 @@
     (search)="getSearchParams($event)"
     (searchedNumberOfBooks)="changeNumberOfBooks($event)"
   ></app-books-search>
-
   <div class="container" *ngIf="booksCollection && searchParams">
     <div *ngIf="!booksCollection.items; else collectionNotEmpty">
       Your search did not return any results
