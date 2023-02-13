@@ -1,72 +1,7 @@
-@import "src/colors.scss";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-$_white: #f0f0f1;
-$_gray: #e0e0e0;
-$_dark-gray: #a8a8a8;
-$_light-gray: #eeecec;
-$_black: #222222;
-$_pale-mint: #54ec68;
-$_mint: #38cb5a;
-$_dark-green: #254a39;
-$_shadow-green: 0 0 0 0.25rem rgba(56, 203, 68, 0.45);
-$_shadow-mint: 0 0 0 0.25rem rgba(56, 150, 58, 0.45);
-$_shadow-gray: 0 0 0 0.25rem rgba(240, 240, 241, 0.25);
-
-@mixin button-style(
-  $color,
-  $bg-color,
-  $focus-shadow-color,
-  $hover-bg-color,
-  $pseudo-class-color: false
-) {
-  color: $color;
-  background-color: $bg-color;
-  width: 100%;
-  border: none;
-  &:focus {
-    box-shadow: $focus-shadow-color;
-    @if $pseudo-class-color {
-      color: $pseudo-class-color;
-    }
-  }
-  &:hover {
-    background-color: lighten($hover-bg-color, 2%);
-    @if $pseudo-class-color {
-      color: $pseudo-class-color;
-    }
-  }
-}
-
-.form-control {
-  &:focus {
-    box-shadow: $_shadow-green;
-    border: none;
-    outline: 0;
-  }
-}
-
-.form-check-input {
-  &:checked {
-    border-color: $_mint;
-    background-color: $_mint;
-    box-shadow: $_shadow-green;
-  }
-}
-
-.btn.btn-primary {
-  @include button-style($_white,$_mint, $_shadow-mint,$_mint, $_white);
-}
-
-.btn.btn-secondary {
-  @include button-style($_white, $_pale-mint, $_shadow-mint, $_pale-mint, $_white);
-}
-
-.btn.btn-light {
-  @include button-style($_black, $_white, $_shadow-gray, $_white);
-}
 
 
 
