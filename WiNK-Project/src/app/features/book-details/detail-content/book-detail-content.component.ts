@@ -26,7 +26,7 @@ export class BookDetailContentComponent implements OnChanges {
 
   onExternalLinkOpen(link?: string): void {
     if (link) {
-      window.location.href = link;
+      window.open(link,'_blank')
     }
   }
 }

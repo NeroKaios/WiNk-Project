@@ -1,9 +1,9 @@
-<ng-container class="position-relative">
+<ng-container class="relative">
   <app-books-search
     (search)="getSearchParams($event)"
     (searchedNumberOfBooks)="changeNumberOfBooks($event)"
   ></app-books-search>
-  <div class="container" *ngIf="booksCollection && searchParams">
+  <div class="container mx-auto sm:px-4" *ngIf="booksCollection && searchParams">
     <div *ngIf="!booksCollection.items; else collectionNotEmpty">
       Your search did not return any results
     </div>
@@ -12,35 +12,30 @@
       Showing {{ searchParams.startIndex + 1 }} -
       {{ searchParams.startIndex + paginationStep! }} results
 
-      <div class="cards-grid mt-3">
+      <div class="grid gap-4 cards-grid mt-3">
         <app-book-card
           *ngFor="let item of booksCollection.items | slice:0:displayedNumberOfBooks"
           [volume]="item"
         ></app-book-card>
       </div>
 
-      <div
-        class="item-centered my-3"
-        *ngIf="booksCollection.totalItems > paginationStep!"
-      >
+      <div class="flex items-center justify-center flex-wrap my-3" *ngIf="booksCollection.totalItems > paginationStep!">
         <app-pagination-button
-          class="me-1"
           [isDisabled]="searchParams.startIndex <= 0"
           (buttonClick)="onPreviousPageClick()"
         >
-          <i class="bi bi-arrow-left-short pagination-icon"></i>
-          Previous page
+           <- Previous page
         </app-pagination-button>
+
         <app-pagination-button
-          class="ms-1"
+          class="ml-1"
           [isDisabled]="
             searchParams.startIndex >
             booksCollection.totalItems - paginationStep!
           "
           (buttonClick)="onNextPageClick()"
         >
-          Next page
-          <i class="bi bi-arrow-right-short pagination-icon"></i>
+          Next page ->
         </app-pagination-button>
       </div>
     </ng-template>
