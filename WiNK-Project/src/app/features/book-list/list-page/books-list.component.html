@@ -9,8 +9,10 @@
     </div>
     <ng-template #collectionNotEmpty>
       <h4>Search results for "{{ searchParams.searchTerm }}"</h4>
-      Showing {{ searchParams.startIndex + 1 }} -
-      {{ searchParams.startIndex + paginationStep! }} results
+      <span class="font-semibold">
+        Showing {{ searchParams.startIndex + 1 }} -
+        {{ searchParams.startIndex + paginationStep! }} results
+      </span>
 
       <div class="grid gap-4 cards-grid mt-3">
         <app-book-card
